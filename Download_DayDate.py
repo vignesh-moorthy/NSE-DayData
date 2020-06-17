@@ -77,7 +77,7 @@ for single_date in daterange:
     if weekday not in [5,6]:
         Working_day=Working_day+1
         logger.info("Trying to download File of :"+loop_date)
-        temp_zip_file_url = 'https://www.nseindia.com/content/historical/EQUITIES/'+year+'/'+month+'/cm'+date+month+year+'bhav.csv.zip'
+        temp_zip_file_url = 'https://www1.nseindia.com/content/historical/EQUITIES/'+year+'/'+month+'/cm'+date+month+year+'bhav.csv.zip'
         req(zip_file_url=temp_zip_file_url)
         #print(temp_zip_file_url)
     else:
