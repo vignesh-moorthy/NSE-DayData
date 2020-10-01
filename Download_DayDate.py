@@ -21,8 +21,8 @@ from datetime import datetime,timedelta
 Start_date="enter_start_date_in_DDMMMYYYY"
 End_date="enter_end_date_in_DDMMMYYYY"
 
-#Start_date="09OCT2019"
-#End_date="12OCT2019"
+
+
 #If no date is given, then it will download the files from the 7 previous days
 
 d_path="Path_to_download_the_csv_file"
