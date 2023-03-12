@@ -16,8 +16,8 @@ End_date="12OCT2019"
 import requests, zipfile, io,logging
 import pandas as pd
 from datetime import datetime,timedelta
-
-
+import os
+file_path = os.path.abspath(os.path.dirname(__file__))
 Start_date="enter_start_date_in_YYYYMMMDD"
 End_date="enter_end_date_in_YYYYMMMDD"
 
@@ -29,6 +29,11 @@ d_path="Path_to_download_the_csv_file"
 #Example: d_path='D:\Trade\Day_Bhavcopy.'
 #If you fail to specify a path, the csv files will get downloaded in the path where this code is saved(Under /Path_to_download_the_extracted_file).
 
+if d_path=="Path_to_download_the_csv_file":
+    outpath="In directory '"+file_path + "' under 'Path_to_download_the_csv_file' folder"
+else:
+    outpath="In directory '"+d_path 
+    
 #To print Number of working days/files downloaded
 global No_of_download,Working_day,Non_Work_day
 No_of_download=0
@@ -45,10 +50,12 @@ def req(zip_file_url):
     if status_code==200:
         No_of_download=No_of_download+1
         logger.info("File Available.Downloading")
+        print("File Available.Downloading")
         z = zipfile.ZipFile(io.BytesIO(r.content))
         z.extractall(path=d_path)
     else:
         logger.info("******File Not Available.Moving to next date.")
+        print("******File Not Available.Moving to next date.")
 
 
 
@@ -77,6 +84,7 @@ for single_date in daterange:
     if weekday not in [5,6]:
         Working_day=Working_day+1
         logger.info("Trying to download File of :"+loop_date)
+        print("Trying to download File of :"+loop_date)
         temp_zip_file_url = 'https://www1.nseindia.com/content/historical/EQUITIES/'+year+'/'+month+'/cm'+date+month+year+'bhav.csv.zip'
         req(zip_file_url=temp_zip_file_url)
         #print(temp_zip_file_url)
@@ -88,5 +96,13 @@ logger.info("*******************************************************************
 logger.info("No. of files downloaded="+str(No_of_download)) 
 logger.info("Span= " + Start_date+ " to " + End_date )
 logger.info("No. of weekdays in the given time span="+str(Working_day)) 
+logger.info(outpath)
 logger.info("****************************************************************************************") 
 logging.shutdown()
+
+print("****************************************************************************************") 
+print("No. of files downloaded="+str(No_of_download)) 
+print("Span= " + Start_date+ " to " + End_date )
+print("No. of weekdays in the given time span="+str(Working_day)) 
+print(outpath)
+print("****************************************************************************************") 
