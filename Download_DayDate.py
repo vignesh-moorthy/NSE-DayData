@@ -18,11 +18,11 @@ import pandas as pd
 from datetime import datetime,timedelta
 
 
-Start_date="enter_start_date_in_DDMMMYYYY"
-End_date="enter_end_date_in_DDMMMYYYY"
+Start_date="enter_start_date_in_YYYYMMMDD"
+End_date="enter_end_date_in_YYYYMMMDD"
 
-#Start_date="09OCT2019"
-#End_date="12OCT2019"
+#Start_date="2023MAR01"
+#End_date="2023MAR12"
 #If no date is given, then it will download the files from the 7 previous days
 
 d_path="Path_to_download_the_csv_file"
@@ -59,10 +59,10 @@ logger=logging.getLogger()
 logger.setLevel(logging.INFO) 
 
 #Populating today's date as default, if the stat_date and/or End_date is not provided.
-if Start_date=="" or Start_date=="enter_start_date_in_DDMMMYYYY":
+if Start_date=="" or Start_date=="enter_start_date_in_YYYYMMMDD":
     Start_date=(datetime.now()-timedelta(days=7)).strftime("%Y%b%d")
     End_date=today_date
-if End_date=="" or End_date=="enter_start_date_in_DDMMMYYYY":
+if End_date=="" or End_date=="enter_end_date_in_YYYYMMMDD":
         End_date=today_date
 
 daterange = pd.date_range(datetime.strptime(Start_date, "%Y%b%d"),datetime.strptime(End_date, "%Y%b%d"))
