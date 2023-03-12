@@ -30,9 +30,9 @@ d_path="Path_to_download_the_csv_file"
 #If you fail to specify a path, the csv files will get downloaded in the path where this code is saved(Under /Path_to_download_the_extracted_file).
 
 if d_path=="Path_to_download_the_csv_file":
-    outpath="In directory '"+file_path + "' under 'Path_to_download_the_csv_file' folder"
+    outpath="Downloaded files in directory '"+file_path + "' under 'Path_to_download_the_csv_file' folder"
 else:
-    outpath="In directory '"+d_path 
+    outpath="Downloaded files in directory '"+d_path 
     
 #To print Number of working days/files downloaded
 global No_of_download,Working_day,Non_Work_day
